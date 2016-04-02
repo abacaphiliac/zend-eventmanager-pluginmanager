@@ -1,0 +1,42 @@
+{
+    "name": "abacaphiliac/zend-eventmanager-pluginmanager",
+    "description": "A ZF2 Plugin Manager for ZF2 Event Managers",
+    "keywords": [
+        "zend",
+        "zf2",
+        "module",
+        "pluginmanager",
+        "eventmanager"
+    ],
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Timothy Younger",
+            "email": "abacaphiliac@gmail.com"
+        }
+    ],
+    "require": {
+        "zendframework/zend-eventmanager": "^2",
+        "zendframework/zend-modulemanager": "^2",
+        "zendframework/zend-mvc": "^2",
+        "zendframework/zend-servicemanager": "^2"
+    },
+    "require-dev": {
+        "jakub-onderka/php-parallel-lint": "^0.9",
+        "phing/phing": "^2",
+        "phpunit/phpunit": "^5|^4",
+        "squizlabs/php_codesniffer": "^2.2",
+        "zendframework/zendframework": "^2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Abacaphiliac\\Zend\\EventManager\\PluginManager\\": "src/PluginManager"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}
