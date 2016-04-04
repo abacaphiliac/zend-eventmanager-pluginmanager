@@ -35,6 +35,11 @@
             "Abacaphiliac\\Zend\\EventManager\\PluginManager\\": "src/PluginManager"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "AbacaphiliacTest\\Zend\\EventManager\\PluginManager\\": "tests/PluginManagerTest"
+        }
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "0.1.x-dev"

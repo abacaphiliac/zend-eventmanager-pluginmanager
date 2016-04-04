@@ -81,4 +81,25 @@ class ModuleCollaborationTest extends \PHPUnit_Framework_TestCase
         
         self::assertInstanceOf('\Zend\EventManager\EventManagerInterface', $actual);
     }
+    
+    public function testEventManagersModule()
+    {
+        $this->serviceLocator->setService('ApplicationConfig', array(
+            'modules' => array(
+                'Abacaphiliac\Zend\EventManager\PluginManager',
+                'AbacaphiliacTest\Zend\EventManager\PluginManager\Assets\EventManagers',
+            ),
+            'module_listener_options' => array(),
+        ));
+
+        $moduleManager = $this->serviceLocator->get('ModuleManager');
+        $moduleManager->loadModules();
+
+        /** @var ServiceLocatorInterface $eventManagers */
+        $eventManagers = $this->serviceLocator->get('EventManagers');
+
+        $actual = $eventManagers->get('MyEventManager');
+
+        self::assertInstanceOf('\Zend\EventManager\EventManagerInterface', $actual);
+    }
 }

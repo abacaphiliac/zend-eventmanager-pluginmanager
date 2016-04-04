@@ -50,10 +50,10 @@ class Module
             // services into the plugin manager, using this interface in a Module
             // class is optional and depending on how your auto-loader is configured
             // it may not work correctly.
-            '\Zend\EventManager\EventsCapableInterface',
+            '\Abacaphiliac\Zend\EventManager\PluginManager\EventManagersProviderInterface',
             // The function specified by the above interface, the return value of this
             // function is merged with the config from 'sample_plugins_config_key'.
-            'getEventManager'
+            'getEventManagersConfig'
         );
     }
 }
