@@ -30,7 +30,11 @@ class Module
         /** @var ServiceListenerInterface $serviceListener */
         $serviceListener = $serviceLocator->get('ServiceListener');
         
+        // Register EventManagers plugin manager.
         static::registerPluginManager($serviceListener);
+        
+        // Register ListenerAggregates plugin manager.
+        static::registerListenerAggregatesPluginManager($serviceListener);
     }
 
     /**
@@ -54,6 +58,30 @@ class Module
             // The function specified by the above interface, the return value of this
             // function is merged with the config from 'sample_plugins_config_key'.
             'getEventManagersConfig'
+        );
+    }
+
+    /**
+     * @param ServiceListenerInterface $serviceListener
+     * @return ServiceListenerInterface
+     */
+    public static function registerListenerAggregatesPluginManager(ServiceListenerInterface $serviceListener)
+    {
+        return $serviceListener->addServiceManager(
+            // The name of the plugin manager as it is configured in the service manager,
+            // all config is injected into this instance of the plugin manager.
+            'ListenerAggregates',
+            // The key which is read from the merged module.config.php files, the
+            // contents of this key are used as services for the plugin manager.
+            'listener_aggregates',
+            // The interface which can be specified on a Module class for injecting
+            // services into the plugin manager, using this interface in a Module
+            // class is optional and depending on how your auto-loader is configured
+            // it may not work correctly.
+            '\Abacaphiliac\Zend\EventManager\PluginManager\ListenerAggregate\ListenerAggregatesProviderInterface',
+            // The function specified by the above interface, the return value of this
+            // function is merged with the config from 'sample_plugins_config_key'.
+            'getListenerAggregatesConfig'
         );
     }
 }
